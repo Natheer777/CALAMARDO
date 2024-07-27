@@ -14,7 +14,9 @@ export default function Message() {
                 Come <span>&</span>Experiences
               </h1>
               <h3 className="subtile_Come right">Our best of orld class cuisine</h3>
+              <a href="#contact">
               <button className="top">BOOK YOUR TABLE NOW</button>
+              </a>
             </div>
           </div>
         </div>

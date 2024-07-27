@@ -59,7 +59,10 @@ export default function Header() {
   <h1 className='left'>Eatin' Good in Calamaro seafoods.</h1>
   <hr />
   <p className='right'>COME & EXPERIENCES OUR BEST OF WORLD CLASS CUISINE</p>
+  <a href="#menu">
+
   <button className='top'>BROWSE OUR MENU</button>
+  </a>
   </div>
   </div>
   
