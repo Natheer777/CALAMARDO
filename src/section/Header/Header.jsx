@@ -41,13 +41,13 @@ export default function Header() {
         <li className="nav-item">
           <a className="nav-link" href="https://www.instagram.com/calamardo.alc?igsh=NTc4MTIwNjQ2YQ==" target='_blank'><FaInstagram /></a>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
                   <Link className="nav-link" to="/Login">
                     <button>Log in</button>
                   </Link>
     
         
-    </li>
+    </li> */}
     
       </ul>
     </div>
