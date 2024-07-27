@@ -91,7 +91,7 @@ useEffect(() => {
     <Router>
       <Routes>
         <Route path='/CALAMARDO/' element={<Home />}/>
-        <Route path='/Login' element={<Admin />}/>
+        <Route path='/CALAMARDO/Login' element={<Admin />}/>
         <Route 
             path="/Dash" 
             element={
