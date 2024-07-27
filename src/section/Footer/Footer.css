@@ -1,0 +1,86 @@
+.Footer {
+  background-color: var(--Moregray-background);
+  color: var(--white-background);
+}
+.Footer_items {
+  padding-top: 10vh;
+  border-top: 8px var(--orang-background) solid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+}
+.Footer_items ul {
+  list-style: none;
+}
+.Footer_items h2 {
+  font-family: "Playfair Display";
+  font-weight: 700;
+  font-size: 21px;
+}
+.Footer_items ul li {
+  font-weight: "Open Sans";
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--verygray-background);
+  margin-top: 8px;
+}
+.Footer_items ul li span {
+  color: var(--white-background);
+  margin-left: 5px;
+}
+.Logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closed {
+  width: 50px;
+  height: 20px;
+  padding: 2px;
+  background-color: var(--orang-background);
+  color: var(--white-background);
+  font-size: 12px;
+}
+.diffrent {
+  color: var(--white-background);
+}
+.Image {
+  width: 64px;
+  height: 65px;
+  background-color:var(--black-background) ;
+  
+}
+.instagram{
+    width: 270px;
+    height: 263px;
+}
+.instagram ul {
+    gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.copyRhite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 136px;
+  background-color: var(--down-background);
+}
+.copyRhite h3 {
+  font-family: "Open Sans";
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--verygray-background);
+}
+.copyRhite h3 span {
+  color: var(--orang-background);
+}
+
+.closed{
+  width: 50px;
+  height: 20px;
+  background-color: var(--orang-background);
+  border: none;
+  padding: 2px;
+}

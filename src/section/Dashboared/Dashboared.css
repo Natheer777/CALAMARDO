@@ -1,0 +1,93 @@
+.card-container{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+.food-item{
+    flex-direction: column;
+}
+.dash{
+    text-align: center;
+    background-color: var(--white-background);
+}
+.dash h1,h2{
+    color: var(--orang-background);
+}
+.dash input , textarea{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 10vh;
+    border: 2px black solid;
+    padding: 2vh;
+    color: var(--black-background);
+
+}
+.dash ::placeholder{
+    color: var(--black-background) !important;
+}
+.dashimg{
+    border: none !important;
+    color: var(--black-background) !important;
+}
+.decrption{
+    color: var(--black-background) !important;
+}
+.dash ul li a{
+    color: var(--black-background) !important;
+}
+
+.dashboard {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #f4f4f4;
+    padding: 10px;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 10px 0;
+  }
+  
+  .sidebar nav ul li a,
+  .sidebar nav ul li button {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    background-color: #e7e7e7;
+    border: none;
+    width: 100%;
+    text-align: left;
+  }
+  
+  .sidebar nav ul li button {
+    cursor: pointer;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .dashboard {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+    }
+  
+    .content {
+      padding: 10px;
+    }
+  }

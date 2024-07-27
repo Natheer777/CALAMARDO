@@ -1,0 +1,82 @@
+.menu-container {
+  padding-bottom: 20vh;
+    background-image: url('../../assets/background/97bf6e6314bdfef16ac8ea45436e1cdf.jpg');
+    background-position:top;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  .food-item {
+    padding: 10px;
+    width: 350px;
+    text-align: start;
+    margin: auto;
+    background-color: var(--white-background);
+    margin-bottom: 10vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-flow: column-reverse;
+    /* height: 410px; */
+  }
+  
+  .food-item img {
+    width: 80%;
+    margin: auto;
+    border-radius: 8px;
+  }
+  
+  .loading, .error {
+    text-align: center;
+    margin: 20px;
+    font-size: 1.2em;
+  }
+  .nameCard{
+    margin-bottom: 5vh;
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--black-background);
+  }
+  .nameCard span{
+    float: right;
+    font-weight: 400;
+    font-size: 24px;
+  }
+  .nameCard span svg{
+    font-size: 15px;
+  }
+  .desCard{
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--gray-background);
+  }
+
+.backColor{
+  padding: 10vh;
+  background-color:#d1caca;
+}
+.MenuContent h1{
+  padding-top: 5vh;
+}
+.MenuContent p{
+  color: var(--white-background) !important;
+}
+.menu-container button{
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+  width: 152px;
+  height: 40px;
+  border: 2px var(--white-background) solid;
+  background-color: transparent;
+  color: var(--white-background);
+  position: relative;
+    left: 50%;
+    transform: translate(-50%, 10px);
+    margin-top: 10vh;
+}
+.menu-container ,.loading ,.error{
+  color: var(--white-background);
+}

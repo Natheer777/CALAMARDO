@@ -1,0 +1,57 @@
+.Contact{
+    padding-top: 5vh;
+    background-color: var(--black-background);
+}
+.Contact svg{
+    position: absolute;
+    left: 10px;
+    bottom: 13px;
+    font-size: 18px;
+    color: var(--white-background);
+}
+.Contact p{
+    color: var(--white-background);
+}
+.Contact input , select , textarea   ,.submit{
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 13px;
+    width: 269px;
+    height: 42px;
+    background-color: transparent;
+    color: var(--whitesmoke-background);
+    border: 2px var(--white-background) solid;
+  
+}
+.Contact input::placeholder{
+    color: var(--whitesmoke-background);
+}
+.Contact_form form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+option{
+    color: var(--black-background);
+}
+
+.submit{
+    border: none;
+    width: 161px;
+    height: 40px;
+    padding: 12px 24px 12px 24px;
+    background-color: var(--orang-background);
+    font-size: 12px;
+    font-weight: 700;
+    margin: 20px auto;
+}
+textarea{
+    height: 111px;
+    width: 90%;
+}
+.textareacontact{
+    color: var(--white-background) !important;
+    border:2px var(--white-background) solid !important;
+}

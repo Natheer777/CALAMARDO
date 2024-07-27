@@ -1,0 +1,52 @@
+.Beverages{
+    text-align: center;
+}
+.Beverages h1{
+    font-family: 'Herr Von Muellerhoff';
+    font-weight: 400;
+    font-size: 100px;
+    color: var(--orang-background);
+    margin-top: 10vh;
+    
+}
+.Beverages  .BreName , .BevPrice{
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--black-background);
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50% , 0);
+    color: var(--white-background);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.BevPrice{
+    padding-top: 30px;
+}
+.BevPrice svg{
+    font-size: 18px;
+}
+.cards img{
+    width: 270px;
+    height: 457px;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+}
+.Card{
+width: 270px;
+height: 457px;
+position: relative;
+}
+
+.Beverages_img:nth-child(2){
+    transition-delay: 10000ms;
+}

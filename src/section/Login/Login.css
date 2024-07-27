@@ -1,0 +1,6 @@
+.login-container{
+    text-align: center;
+    background-color: var(--Moregray-background);
+    height: 100vh;
+    padding-top: 20vh;
+}

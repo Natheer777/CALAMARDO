@@ -1,0 +1,128 @@
+.sec_wel {
+  background-color: var(--white-background);
+  /* height: 1099px; */
+  text-align: center;
+}
+.content_wel {
+  width: 68%;
+  margin: 20vh auto;
+}
+
+.title_wel {
+  font-family: "Herr Von Muellerhoff", cursive;
+  font-weight: 400;
+  font-size: 100px;
+  color: var(--orang-background);
+}
+
+.subtile_wel {
+  font-family: "Playfair Display";
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black-background);
+}
+.img_wel img {
+  width: 24px;
+  height: 24px;
+  margin: 20px 0 20px 0;
+}
+
+.pargraph_wel {
+  font-family: "Open Sans";
+  font-weight: 300;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--gray-background);
+}
+.pargraph_wel span {
+  color: var(--orang-background);
+}
+
+.images_Wel {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: nowrap;
+  gap: 160px;
+}
+
+.images_Wel .img1,
+.images_Wel .img3 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 475px;
+  height: 277px;
+  z-index: 0;
+}
+.images_Wel .img2 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 600px;
+  height: 350px;
+  z-index: 1;
+  border: 10px white solid;
+  border-bottom: none;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  box-shadow: 0px 0rem 1rem 4px gray !important;
+  position: absolute;
+}
+.img1 {
+  background-image: url("../../assets/image/WhatsApp Image 2023-03-23 at 20.56.48.webp");
+}
+.img2 {
+  background-image: url("../../assets/image/WhatsApp Image 2023-03-23 at 13.57.23.webp");
+}
+.img3 {
+  background-image: url("../../assets/image/WhatsApp Image 2023-03-23 at 17.48.15.webp");
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .images_Wel {
+    gap: 0;
+  }
+}
+
+@media (max-width: 1200px) {
+  .images_Wel {
+    width: 90%;
+    margin: auto;
+  }
+
+  .images_Wel .img1,
+  .images_Wel .img3,
+  .images_Wel .img2 {
+    width: 100%;
+    padding-top: 0; 
+  }
+
+  .images_Wel .img2 {
+    position: relative;
+    border-width: 5px;
+    box-shadow: 0px 0rem 0.5rem 2px gray !important;
+    width: 160%;
+  }
+}
+
+@media (max-width: 765px) {
+  .images_Wel {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .images_Wel .img1,
+  .images_Wel .img3,
+  .images_Wel .img2 {
+    background-size: cover;
+  }
+
+}
+
+
+.img .img1{
+  transition-delay: 1500ms;
+}

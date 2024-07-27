@@ -1,0 +1,78 @@
+.header_sec{
+    width: 100%;
+    height:1099px;
+    background-image: url('../../assets/background/Image.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.navbar ul li a{
+    color: var(--white-background) !important;
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-size: 15.5px;
+}
+.navbar ul li a button{
+    background-color: var(--orang-background);
+    border: none;
+    padding: 4px;
+    color: var(--white-background);
+}
+.navbar-collapse{
+    justify-content: end;
+}
+@media screen and (max-width:991px){
+.navbar-collapse{
+    justify-content: start;
+}    
+}
+.navbar-brand {
+    color: var(--white-background);
+    font-size: 40px;
+    font-family: 'Playfair Display';
+    font-weight:800 !important;
+
+}
+.navbar-brand:hover{
+    color: var(--white-background);
+}
+.navbar-toggler{
+    background-color: whitesmoke;
+}
+.Header{
+    color: whitesmoke;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    font-family: 'Playfair Display';
+    font-weight: 700;
+    transform: translate(-50%, 50%);
+    width: 67%;
+}
+
+.Header h1{
+    font-size: 60px;
+    
+}
+.Header img{
+width: 60px;
+height: 60px;
+}
+.Header p{
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-size: 18px;
+    margin-top: 20px;
+}
+.Header button{
+    background-color: var(--orang-background);
+    width: 172px;
+    height: 40px;
+    border: none;
+    color: var(--white-background);
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-size: 13px;
+    margin-top: 20px;
+}
