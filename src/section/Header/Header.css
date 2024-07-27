@@ -1,10 +1,12 @@
 .header_sec{
     width: 100%;
-    height:1099px;
-    background-image: url('../../assets/background/Image.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 1099px;
+    background-image: 
+        url('../../assets/background/Image.webp'),
+        url('../../assets/background/delicious-cooked-sea-food 1.webp');
+    background-position: center, center;
+    background-size: cover, cover;
+    background-repeat: no-repeat, no-repeat;
 }
 
 .navbar ul li a{
@@ -77,5 +79,5 @@ height: 60px;
     margin-top: 20px;
 }
 .login{
-    display: none;
+    /* display: none; */
 }
