@@ -2,6 +2,7 @@ import './Header.css'
 import IconHeader from '../../assets/icons/Color Overlay.png'
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 export default function Header() {
   return (
@@ -40,8 +41,11 @@ export default function Header() {
         </li>
         <li className="nav-item">
           <a className="nav-link" href="https://www.instagram.com/calamardo.alc?igsh=NTc4MTIwNjQ2YQ==" target='_blank'><FaInstagram /></a>
+       </li>
+        <li className="nav-item">
+          <a className="nav-link" href="https://wa.link/dt6xys" target='_blank'><FaWhatsapp /></a>
         </li>
-        <li className="nav-item login">
+        <li className="nav-item LogIn">
                   <Link className="nav-link" to="/Login">
                     <button>Log in</button>
                   </Link>

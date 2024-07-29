@@ -78,6 +78,10 @@ height: 60px;
     font-size: 13px;
     margin-top: 20px;
 }
-.login{
-    /* display: none; */
+.LogIn{
+    width: 0;
+    font-size: 0;
+    height: 0;
+    background-color: transparent;
+    visibility: collapse;
 }

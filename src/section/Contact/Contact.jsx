@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="container Contact_form ">
           <form
             method="POST"
-            action="https://formsubmit.co/natheernn3@gmail.com"
+            action="https://formsubmit.co/Calamardo.alc@gmail.com"
             encType="multipart/form-data"
             id="Contact"
           >
@@ -33,15 +33,15 @@ export default function Contact() {
               placeholder="Your Email"
             />
 
-            <select id="Occasion" name="user_occasion">
+            {/* <select id="Occasion" name="user_occasion">
               <option value="Occasion" disabled defaultChecked="Occasion">Occasion*</option>
               <option value="Birthday">Birthday</option>
               <option value="Anniversary">Anniversary</option>
               <option value="Business">Business</option>
               <option value="Casual">Casual</option>
-            </select>
+            </select> */}
 
-            <select id="Preferred" name="user_preferred_food">
+            {/* <select id="Preferred" name="user_preferred_food">
               <option value="Preferred" disabled defaultValue="Preferred">
                 Preferred Food*
               </option>
@@ -49,7 +49,7 @@ export default function Contact() {
               <option value="Meat">Meat</option>
               <option value="Soup">Soup</option>
               <option value="Chicken">Chicken</option>
-            </select>
+            </select> */}
 
             <input
               type="text"
