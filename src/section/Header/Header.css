@@ -83,5 +83,5 @@ height: 60px;
     font-size: 0;
     height: 0;
     background-color: transparent;
-    /* visibility: collapse; */
+    visibility: collapse;
 }
