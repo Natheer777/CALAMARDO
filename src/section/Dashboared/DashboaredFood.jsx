@@ -32,7 +32,7 @@
 //       let allFetchedData = [];
 
 //       while (page <= totalPages) {
-//         const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/foods2?page=${page}`);
+//         const response = await axios.post(`https://calamardoalicante.com/api/foods2?page=${page}`);
 //         totalPages = response.data.totalPages;
 //         const pageData = response.data.data;
 
@@ -52,7 +52,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       const response = await axios.get('https://d93d-185-183-33-219.ngrok-free.app/api/profile', {
+//       const response = await axios.get('https://calamardoalicante.com/api/profile', {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -124,7 +124,7 @@
 //         formData.append('photo', editFormData.photo);
 //       }
 
-//       const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/update_food/${editFormData.id}`, formData, {
+//       const response = await axios.post(`https://calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //           'Content-Type': 'multipart/form-data'
@@ -172,7 +172,7 @@
 //         formData.append('photo', newFormData.photo);
 //       }
 
-//       const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/foods`, formData, {
+//       const response = await axios.post(`https://calamardoalicante.com/api/foods`, formData, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //           'Content-Type': 'multipart/form-data'
@@ -193,7 +193,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.delete(`https://d93d-185-183-33-219.ngrok-free.app/api/foods/${id}`, {
+//       await axios.delete(`https://calamardoalicante.com/api/foods/${id}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -212,7 +212,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.put('https://d93d-185-183-33-219.ngrok-free.app/api/updateProfile', profile, {
+//       await axios.put('https://calamardoalicante.com/api/updateProfile', profile, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -229,7 +229,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.post('https://d93d-185-183-33-219.ngrok-free.app/api/logout', {}, {
+//       await axios.post('https://calamardoalicante.com/api/logout', {}, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -396,9 +396,6 @@
 
 
 
-
-
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -419,55 +416,67 @@ const WordManagement = () => {
     price: '',
     photo: null
   });
+
   const [totalPages, setTotalPages] = useState(1);
-  
   const navigate = useNavigate();
 
-  const fetchData = async () => {
+  // تسجيل الدخول والحصول على التوكن
+  const login = async () => {
     try {
-      let page = 1;
-      let totalPages = 1;
-      let allFetchedData = [];
+      const response = await axios.post('https://calamardoalicante.com/api/login', {
+        name: 'developer',
+        password: 'devloperadmin'
+      });
 
-      while (page <= totalPages) {
-        const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/foods2?page=${page}`);
-        totalPages = response.data.totalPages;
-        const pageData = response.data.data;
-
-        allFetchedData = [...allFetchedData, ...pageData];
-        page += 1;
+      if (response.data && response.data.token) {
+        localStorage.setItem('token', response.data.token); // تخزين التوكن في localStorage
+        console.log('Login successful. Token stored.');
+      } else {
+        console.error('Login failed: No token received.');
       }
-
-      setData(allFetchedData);
-      setTotalPages(totalPages);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error('Error during login:', error);
     }
   };
 
-  const fetchProfile = async () => {
+  const fetchData = async () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      const response = await axios.get('https://d93d-185-183-33-219.ngrok-free.app/api/profile', {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      });
+      let page = 1; // ابدأ من الصفحة الأولى
+      let allFetchedData = [];
+      let hasMoreData = true;
 
-      setProfile({
-        name: response.data.name,
-        password: '' // Don't set password for security reasons
-      });
+      while (hasMoreData) {
+        const response = await axios.get(`https://calamardoalicante.com/api/foods?page=${page}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+
+        if (!response.data || !Array.isArray(response.data.data)) {
+          throw new Error("Unexpected response structure");
+        }
+
+        const pageData = response.data.data;
+
+        allFetchedData = [...allFetchedData, ...pageData];
+
+        hasMoreData = pageData.length > 0; // إذا لم تعد هناك بيانات، توقف
+        page += 1; // انتقل إلى الصفحة التالية
+      }
+
+      setData(allFetchedData);
     } catch (error) {
-      console.error('Error fetching profile:', error);
+      console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    fetchData();
-    fetchProfile();
+    const initialize = async () => {
+      await login(); // تسجيل الدخول
+      await fetchData(); // جلب البيانات
+    };
+    initialize();
   }, []);
 
   const handleChange = (e, isEdit = true) => {
@@ -488,6 +497,8 @@ const WordManagement = () => {
     }
   };
 
+  // بقية الكود (الإضافة، التعديل، الحذف، تسجيل الخروج، واجهة المستخدم) يبقى كما هو...
+
   
 
   const handleEditSubmit = async (e) => {
@@ -500,7 +511,7 @@ const WordManagement = () => {
     }
 
     if (isNaN(editFormData.price)) {
-      console.error('Price must be a number');
+      alert('Price must be a number');
       return;
     }
 
@@ -516,8 +527,9 @@ const WordManagement = () => {
         formData.append('photo', editFormData.photo);
       }
 
-      const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/update_food/${editFormData.id}`, formData, {
+      const response = await axios.post(`https://calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
         headers: {
+          'Accept':'application/json',
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
         }
@@ -564,7 +576,7 @@ const WordManagement = () => {
         formData.append('photo', newFormData.photo);
       }
 
-      const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/foods`, formData, {
+      const response = await axios.post(`https://calamardoalicante.com/api/foods`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -585,7 +597,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.delete(`https://d93d-185-183-33-219.ngrok-free.app/api/foods/${id}`, {
+      await axios.delete(`https://calamardoalicante.com/api/foods/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -605,7 +617,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.post('https://d93d-185-183-33-219.ngrok-free.app/api/logout', {}, {
+      await axios.post('https://calamardoalicante.com/api/logout', {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -636,37 +648,7 @@ const WordManagement = () => {
       <div className='content dash'>
         <h1>Foods</h1>
         <hr />
-        {editFormData.id && (
-          <form className='contact' onSubmit={handleEditSubmit}>
-            <h2>Edit Item food</h2>
-            <input
-              type="text"
-              name="name"
-              value={editFormData.name}
-              onChange={(e) => handleChange(e, true)}
-              placeholder="Name"
-            />
-            <input
-              type="text"
-              name="price"
-              value={editFormData.price}
-              onChange={(e) => handleChange(e, true)}
-              placeholder="Price"
-            />
-            <textarea
-              name="description"
-              value={editFormData.description}
-              onChange={(e) => handleChange(e, true)}
-              placeholder="Description"
-            />
-            <input
-              type="file"
-              name="photo"
-              onChange={(e) => handleChange(e, true)}
-            />
-            <button className='submit' type="submit">Save</button>
-          </form>
-        )}
+  
 
         <form onSubmit={handleAddSubmit} id="addfood">
           <h2>Add New Foods</h2>
@@ -698,14 +680,49 @@ const WordManagement = () => {
           />
           <button type="submit" className='submit'>Add</button>
         </form>
+<hr />
+
+{editFormData.id && (
+          <form className='contact' onSubmit={handleEditSubmit}>
+            <h2>Edit Item food</h2>
+            <input
+              type="text"
+              name="name"
+              value={editFormData.name}
+              onChange={(e) => handleChange(e, true)}
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              name="price"
+              value={editFormData.price}
+              onChange={(e) => handleChange(e, true)}
+              placeholder="Price"
+            />
+            <textarea
+              name="description"
+              value={editFormData.description}
+              onChange={(e) => handleChange(e, true)}
+              placeholder="Description"
+            />
+            <input
+              type="file"
+              name="photo"
+              onChange={(e) => handleChange(e, true)}
+            />
+            <button className='submit' type="submit">Save</button>
+          </form>
+        )}
+
+
 
         <hr />
         <h1 id="allfood">Items Management Foods</h1>
 
         <div className="card-container backColor">
           {data.map((item) => (
-            <div key={item.id} className="food-item">
-              <img className='imgCard' src={item.photo} alt={item.name} />
+            <div key={item.id} className="food-item dash_food">
+              <img className='imgCard' src={`https://calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
               <h3 className='nameCard'>{item.name} <span>{item.price}</span></h3>
               <p className='decrption desCard'>{item.description}</p>
               <button className='submit' onClick={() => setEditFormData({

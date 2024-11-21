@@ -8,13 +8,13 @@ const WordManagement = () => {
   const [editFormData, setEditFormData] = useState({
     id: '',
     name: '',
-    description: '',
+
     price: '',
     photo: null
   });
   const [newFormData, setNewFormData] = useState({
     name: '',
-    description: '',
+
     price: '',
     photo: null
   });
@@ -32,7 +32,7 @@ const WordManagement = () => {
       let allFetchedData = [];
 
       while (page <= totalPages) {
-        const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/drinks2?page=${page}`);
+        const response = await axios.get(`https://calamardoalicante.com/api/drinks?page=${page}`);
         totalPages = response.data.totalPages;
         const pageData = response.data.data;
 
@@ -52,7 +52,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      const response = await axios.get('https://d93d-185-183-33-219.ngrok-free.app/api/profile', {
+      const response = await axios.get('https://calamardoalicante.com/api/login', {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -102,7 +102,7 @@ const WordManagement = () => {
     e.preventDefault();
 
     // Client-side validation
-    if (!editFormData.name || !editFormData.description || !editFormData.price) {
+    if (!editFormData.name  || !editFormData.price) {
       console.error('All fields are required');
       return;
     }
@@ -118,13 +118,12 @@ const WordManagement = () => {
 
       const formData = new FormData();
       formData.append('name', editFormData.name);
-      formData.append('description', editFormData.description);
       formData.append('price', editFormData.price);
       if (editFormData.photo) {
         formData.append('photo', editFormData.photo);
       }
 
-      const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/update_drink/${editFormData.id}`, formData, {
+      const response = await axios.post(`https://calamardoalicante.com/api/update_drink/${editFormData.id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -137,7 +136,6 @@ const WordManagement = () => {
       setEditFormData({
         id: '',
         name: '',
-        description: '',
         price: '',
         photo: null
       });
@@ -150,13 +148,13 @@ const WordManagement = () => {
     e.preventDefault();
 
     // Client-side validation
-    if (!newFormData.name || !newFormData.description || !newFormData.price) {
-      console.error('All fields are required');
+    if (!newFormData.name  || !newFormData.price) {
+      alert('All fields are required');
       return;
     }
 
     if (isNaN(newFormData.price)) {
-      console.error('Price must be a number');
+      alert('Price must be a number');
       return;
     }
 
@@ -166,13 +164,12 @@ const WordManagement = () => {
 
       const formData = new FormData();
       formData.append('name', newFormData.name);
-      formData.append('description', newFormData.description);
       formData.append('price', newFormData.price);
       if (newFormData.photo) {
         formData.append('photo', newFormData.photo);
       }
 
-      const response = await axios.post(`https://d93d-185-183-33-219.ngrok-free.app/api/drinks`, formData, {
+      const response = await axios.post(`https://calamardoalicante.com/api/drinks`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -182,7 +179,7 @@ const WordManagement = () => {
       console.log('New item added:', response.data);
 
       setData([...data, response.data.data]);
-      setNewFormData({ name: '', description: '', price: '', photo: null });
+      setNewFormData({ name: '', price: '', photo: null });
     } catch (error) {
       console.error('Error adding new item:', error);
     }
@@ -193,7 +190,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.delete(`https://d93d-185-183-33-219.ngrok-free.app/api/drinks/${id}`, {
+      await axios.delete(`https://calamardoalicante.com/api/drinks/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -212,13 +209,13 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.put('https://d93d-185-183-33-219.ngrok-free.app/api/updateProfile', profile, {
+      await axios.put('https://calamardoalicante.com/api/updateProfile', profile, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       });
 
-      console.log('Profile updated:', profile);
+      alert('Profile updated:', profile);
     } catch (error) {
       console.error('Error updating profile:', error);
     }
@@ -229,7 +226,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.post('https://d93d-185-183-33-219.ngrok-free.app/api/logout', {}, {
+      await axios.post('https://calamardoalicante.com/api/logout', {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -247,35 +244,7 @@ const WordManagement = () => {
     <div className='Contact dash'>
         <h1>Drinks</h1>
         <hr />
-      {/* <div>
-        <button className='submit' onClick={handleLogout}>Logout</button>
-      </div> */}
-      {editFormData.id && (
-        <form className='contact' onSubmit={handleEditSubmit}>
-          <h2 >Edit Item Drinks</h2>
-          <input
-            type="text"
-            name="name"
-            value={editFormData.name}
-            onChange={(e) => handleChange(e, true)}
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            name="price"
-            value={editFormData.price}
-            onChange={(e) => handleChange(e, true)}
-            placeholder="Price"
-          />
-          <input
-            type="file"
-            name="photo"
-            onChange={(e) => handleChange(e, true)}
-          />
-          <button className='submit' type="submit">Save</button>
-        </form>
-      )}
-
+   
       <form onSubmit={handleAddSubmit}>
         <h2 id='adddrinks'>Add New Drinks</h2>
         <input
@@ -303,19 +272,44 @@ const WordManagement = () => {
 
       <hr />
      
+      {editFormData.id && (
+        <form className='contact' onSubmit={handleEditSubmit}>
+          <h2 >Edit Item Drinks</h2>
+          <input
+            type="text"
+            name="name"
+            value={editFormData.name}
+            onChange={(e) => handleChange(e, true)}
+            placeholder="Name"
+          />
+          <input
+            type="text"
+            name="price"
+            value={editFormData.price}
+            onChange={(e) => handleChange(e, true)}
+            placeholder="Price"
+          />
+          <input
+            type="file"
+            name="photo"
+            onChange={(e) => handleChange(e, true)}
+          />
+          <button className='submit' type="submit">Save</button>
+        </form>
+      )}
 
+<hr />
     
       <h1 id='alldrinks'>Items Management Drinks</h1>
 
 <div className="card-container backColor">
   {data.map((item) => (
-    <div key={item.id} className="food-item">
-      <img className='imgCard' src={item.photo} alt={item.name} />
+    <div key={item.id} className="food-item dash_drinks">
+      <img className='imgCard' src={`https://calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
       <h3 className='nameCard'>{item.name} <span>{item.price}</span></h3>
       <button className='submit' onClick={() => setEditFormData({
         id: item.id,
         name: item.name,
-        description: item.description,
         price: item.price,
         photo: null
       })}>Edit</button>

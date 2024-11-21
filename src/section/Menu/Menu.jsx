@@ -25,7 +25,7 @@ export default function Menu() {
   const fetchTokenAndFoods = async (page, loadAll) => {
     setLoading(true);
     try {
-      const authResponse = await axios.post("https://d93d-185-183-33-219.ngrok-free.app/api/login");
+      const authResponse = await axios.post("https://calamardoalicante.com/api/login");
 
       if (!authResponse.data || !authResponse.data.access_token) {
         throw new Error("Token not found in the response");
@@ -51,8 +51,8 @@ export default function Menu() {
       if (loadAll) {
         while (hasMoreData) {
           console.log(`Fetching foods from page ${page}...`);
-          const response = await axios.post(
-            `https://d93d-185-183-33-219.ngrok-free.app/api/foods2?page=${page}`,
+          const response = await axios.get(
+            `https://calamardoalicante.com/api/foods?page=${page}`,
             {},
             {
               headers: {
@@ -80,8 +80,8 @@ export default function Menu() {
         }
       } else {
         console.log(`Fetching foods from page ${page}...`);
-        const response = await axios.post(
-          `https://d93d-185-183-33-219.ngrok-free.app/api/foods2?page=${page}`,
+        const response = await axios.get(
+          `https://calamardoalicante.com/api/foods?page=${page}`,
           {},
           {
             headers: {
@@ -138,7 +138,7 @@ export default function Menu() {
       <div className="backColor container" style={{ display: "flex", flexWrap: "wrap" }}>
         {foods.map((food) => (
           <div key={food.id} className="food-item">
-            <img className="imgCard" src={`https://d93d-185-183-33-219.ngrok-free.app/api/image/${food.photo}`} alt={food.name} />
+            <img className="imgCard" src={`https://calamardoalicante.com/api/image/${food.photo}`} alt={food.name} />
            <hr />
             <h2 className="nameCard">{food.name} <span>{food.price}<FiDollarSign /></span></h2>
             <p className="desCard">{food.description}</p>

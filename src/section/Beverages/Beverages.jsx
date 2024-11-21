@@ -25,7 +25,7 @@ export default function Beverages() {
   const fetchTokenAndData = async (page, loadAll) => {
     setLoading(true);
     try {
-      const authResponse = await axios.post("https://d93d-185-183-33-219.ngrok-free.app/api/login", {
+      const authResponse = await axios.post("https://calamardoalicante.com/api/login", {
         name: "developer",
         password: "devloperadmin",
       });
@@ -54,8 +54,8 @@ export default function Beverages() {
       if (loadAll) {
         while (hasMoreData) {
           console.log(`Fetching data from page ${page}...`);
-          const response = await axios.post(
-            `https://d93d-185-183-33-219.ngrok-free.app/api/drinks2?page=${page}`,
+          const response = await axios.get(
+            `https://calamardoalicante.com/api/drinks?page=${page}`,
             {},
             {
               headers: {
@@ -83,8 +83,8 @@ export default function Beverages() {
         }
       } else {
         console.log(`Fetching data from page ${page}...`);
-        const response = await axios.post(
-          `https://d93d-185-183-33-219.ngrok-free.app/api/drinks2?page=${page}`,
+        const response = await axios.get(
+          `https://calamardoalicante.com/api/drinks?page=${page}`,
           {},
           {
             headers: {
@@ -140,10 +140,10 @@ export default function Beverages() {
       </p>
       {loading && <p className="loading">Loading...</p>}
       {error && <p className="error">{error}</p>}
-      <div className="cards">
+      <div className="cards mb-4">
         {data.map((card) => (
           <div key={card.id} className="Card">
-            <img src={card.photo} alt={card.name}/>
+            <img src= {`https://calamardoalicante.com/api/image/${card.photo}`} alt={card.name}/>
             <h3 className="BreName">{card.name}
                </h3>
                <p className="BevPrice">{card.price}<FiDollarSign /></p>
