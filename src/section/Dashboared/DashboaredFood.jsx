@@ -424,8 +424,8 @@ const WordManagement = () => {
   const login = async () => {
     try {
       const response = await axios.post('https://api.calamardoalicante.com/api/login', {
-        name: 'developer',
-        password: 'devloperadmin'
+        name: 'ali',
+        password: 'ali123'
       });
 
       if (response.data && response.data.token) {
