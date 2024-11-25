@@ -30,7 +30,7 @@ export default function Login() {
       const token = authResponse.data.access_token;
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('token', token);
-      navigate('/Dash');
+      navigate('/CALAMARDO/Dash');
     } catch (error) {
       setError('Invalid username or password');
     }

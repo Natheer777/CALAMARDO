@@ -143,7 +143,7 @@ export default function Beverages() {
       <div className="cards mb-4">
         {data.map((card) => (
           <div key={card.id} className="Card">
-            <img src= {`https://calamardoalicante.com/api/image/${card.photo}`} alt={card.name}/>
+            <img src= {`https://api.calamardoalicante.com/api/image/${card.photo}`} alt={card.name}/>
             <h3 className="BreName">{card.name}
                </h3>
                <p className="BevPrice">{card.price}<FiDollarSign /></p>
