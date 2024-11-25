@@ -28,6 +28,9 @@
 .navbar-collapse{
     justify-content: start;
 }    
+.navbar{
+    position: absolute;
+}
 }
 .navbar-brand {
     color: var(--white-background);

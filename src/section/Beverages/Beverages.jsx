@@ -84,7 +84,7 @@ export default function Beverages() {
       } else {
         console.log(`Fetching data from page ${page}...`);
         const response = await axios.get(
-          `https://calamardoalicante.com/api/drinks?page=${page}`,
+          `https://api.calamardoalicante.com/api/drinks?page=${page}`,
           {},
           {
             headers: {

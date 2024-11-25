@@ -32,7 +32,7 @@
 //       let allFetchedData = [];
 
 //       while (page <= totalPages) {
-//         const response = await axios.post(`https://calamardoalicante.com/api/foods2?page=${page}`);
+//         const response = await axios.post(`https://api.calamardoalicante.com/api/foods2?page=${page}`);
 //         totalPages = response.data.totalPages;
 //         const pageData = response.data.data;
 
@@ -52,7 +52,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       const response = await axios.get('https://calamardoalicante.com/api/profile', {
+//       const response = await axios.get('https://api.calamardoalicante.com/api/profile', {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -124,7 +124,7 @@
 //         formData.append('photo', editFormData.photo);
 //       }
 
-//       const response = await axios.post(`https://calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
+//       const response = await axios.post(`https://api.calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //           'Content-Type': 'multipart/form-data'
@@ -172,7 +172,7 @@
 //         formData.append('photo', newFormData.photo);
 //       }
 
-//       const response = await axios.post(`https://calamardoalicante.com/api/foods`, formData, {
+//       const response = await axios.post(`https://api.calamardoalicante.com/api/foods`, formData, {
 //         headers: {
 //           Authorization: `Bearer ${token}`,
 //           'Content-Type': 'multipart/form-data'
@@ -193,7 +193,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.delete(`https://calamardoalicante.com/api/foods/${id}`, {
+//       await axios.delete(`https://api.calamardoalicante.com/api/foods/${id}`, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -212,7 +212,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.put('https://calamardoalicante.com/api/updateProfile', profile, {
+//       await axios.put('https://api.calamardoalicante.com/api/updateProfile', profile, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -229,7 +229,7 @@
 //       const token = localStorage.getItem('token');
 //       if (!token) throw new Error('No authentication token found');
 
-//       await axios.post('https://calamardoalicante.com/api/logout', {}, {
+//       await axios.post('https://api.calamardoalicante.com/api/logout', {}, {
 //         headers: {
 //           Authorization: `Bearer ${token}`
 //         }
@@ -423,7 +423,7 @@ const WordManagement = () => {
   // تسجيل الدخول والحصول على التوكن
   const login = async () => {
     try {
-      const response = await axios.post('https://calamardoalicante.com/api/login', {
+      const response = await axios.post('https://api.calamardoalicante.com/api/login', {
         name: 'developer',
         password: 'devloperadmin'
       });
@@ -449,7 +449,7 @@ const WordManagement = () => {
       let hasMoreData = true;
 
       while (hasMoreData) {
-        const response = await axios.get(`https://calamardoalicante.com/api/foods?page=${page}`, {
+        const response = await axios.get(`https://api.calamardoalicante.com/api/foods?page=${page}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
 
@@ -527,7 +527,7 @@ const WordManagement = () => {
         formData.append('photo', editFormData.photo);
       }
 
-      const response = await axios.post(`https://calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
+      const response = await axios.post(`https://api.calamardoalicante.com/api/update_food/${editFormData.id}`, formData, {
         headers: {
           'Accept':'application/json',
           Authorization: `Bearer ${token}`,
@@ -576,7 +576,7 @@ const WordManagement = () => {
         formData.append('photo', newFormData.photo);
       }
 
-      const response = await axios.post(`https://calamardoalicante.com/api/foods`, formData, {
+      const response = await axios.post(`https://api.calamardoalicante.com/api/foods`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -597,7 +597,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.delete(`https://calamardoalicante.com/api/foods/${id}`, {
+      await axios.delete(`https://api.calamardoalicante.com/api/foods/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -617,7 +617,7 @@ const WordManagement = () => {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No authentication token found');
 
-      await axios.post('https://calamardoalicante.com/api/logout', {}, {
+      await axios.post('https://api.calamardoalicante.com/api/logout', {}, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -722,7 +722,7 @@ const WordManagement = () => {
         <div className="card-container backColor">
           {data.map((item) => (
             <div key={item.id} className="food-item dash_food">
-              <img className='imgCard' src={`https://calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
+              <img className='imgCard' src={`https://api.calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
               <h3 className='nameCard'>{item.name} <span>{item.price}</span></h3>
               <p className='decrption desCard'>{item.description}</p>
               <button className='submit' onClick={() => setEditFormData({

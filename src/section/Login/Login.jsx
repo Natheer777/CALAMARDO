@@ -18,7 +18,7 @@ export default function Login() {
     const { name, password } = formData;
 
     try {
-      const authResponse = await axios.post('https://calamardoalicante.com/api/login', {
+      const authResponse = await axios.post('https://api.calamardoalicante.com/api/login', {
         name,
         password
       });

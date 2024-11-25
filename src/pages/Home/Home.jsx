@@ -13,7 +13,7 @@ export default function Home() {
       <Contact />
       <Gps />
       <Footer /> 
-      <DashboareD />
+
     </>
   );
 }

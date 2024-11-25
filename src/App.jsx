@@ -16,7 +16,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 100);
+    }, 3000);
   }, []);
   ////////////////////////////////
 
@@ -93,7 +93,7 @@ useEffect(() => {
         <Route path='/CALAMARDO/' element={<Home />}/>
         <Route path='CALAMARDO/Login' element={<Admin />}/>
         <Route 
-            path="/Dash" 
+            path="/CALAMARDO/Dash" 
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
               {<Dash />}
