@@ -25,7 +25,7 @@ export default function Beverages() {
   const fetchTokenAndData = async (page, loadAll) => {
     setLoading(true);
     try {
-      const authResponse = await axios.post("https://calamardoalicante.com/api/login", {
+      const authResponse = await axios.post("https://api.calamardoalicante.com/api/login", {
         name: "developer",
         password: "devloperadmin",
       });
@@ -55,7 +55,7 @@ export default function Beverages() {
         while (hasMoreData) {
           console.log(`Fetching data from page ${page}...`);
           const response = await axios.get(
-            `https://calamardoalicante.com/api/drinks?page=${page}`,
+            `https://api.calamardoalicante.com/api/drinks?page=${page}`,
             {},
             {
               headers: {
