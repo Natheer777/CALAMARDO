@@ -91,9 +91,9 @@ useEffect(() => {
     <Router>
       <Routes>
         <Route path='/CALAMARDO/' element={<Home />}/>
-        <Route path='CALAMARDO/Login' element={<Admin />}/>
+        <Route path='/CALAMARDO/Login' element={<Admin />}/>
         <Route 
-            path="CALAMARDO/Dash" 
+            path="/CALAMARDO/Dash" 
             element={
               <ProtectedRoute isAuthenticated={isAuthenticated}>
               {<Dash />}
