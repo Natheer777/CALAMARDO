@@ -84,3 +84,13 @@
   border: none;
   padding: 2px;
 }
+.instagram svg{
+  color: var(--orang-background);
+  font-size: 25px;
+  margin-top: 10px;
+}
+@media  screen and (max-width:768px) {
+  .Logo{
+    margin: auto;
+  }
+}

@@ -632,9 +632,10 @@ const WordManagement = () => {
   };
 
   return (
-    <div className='dashboard'>
+    <>
+   <div className='dashboard'>
       <div className='sidebar'>
-        <nav>
+        <nav className='sticky-top'>
           <ul>
             <li><a href="#addfood">Add Food</a></li>
             <li><a href="#allfood">Items Foods</a></li>
@@ -677,12 +678,12 @@ const WordManagement = () => {
             type="file"
             name="photo"
             onChange={(e) => handleChange(e, false)}
-          />
+            />
           <button type="submit" className='submit'>Add</button>
         </form>
-<hr />
+        <hr />
 
-{editFormData.id && (
+          {editFormData.id && (
           <form className='contact' onSubmit={handleEditSubmit}>
             <h2>Edit Item food</h2>
             <input
@@ -691,7 +692,7 @@ const WordManagement = () => {
               value={editFormData.name}
               onChange={(e) => handleChange(e, true)}
               placeholder="Name"
-            />
+              />
             <input
               type="text"
               name="price"
@@ -709,7 +710,7 @@ const WordManagement = () => {
               type="file"
               name="photo"
               onChange={(e) => handleChange(e, true)}
-            />
+              />
             <button className='submit' type="submit">Save</button>
           </form>
         )}
@@ -740,6 +741,7 @@ const WordManagement = () => {
      
       </div>
     </div>
+              </>
   );
 };
 

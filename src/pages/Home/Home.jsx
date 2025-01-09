@@ -1,9 +1,9 @@
 import { Beverages, Come, Contact, Footer, Gps, Header, Menu, Message, Welcom } from "../../section/index"
-import DashboareD from "../Dash/Dash";
+// import Dash from '../Dash/Dash'
 export default function Home() {
   return (
     <>
-
+    {/* <Dash /> */}
       <Header />
       <Welcom />
       <Message />

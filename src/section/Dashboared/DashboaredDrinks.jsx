@@ -102,7 +102,7 @@ const WordManagement = () => {
     e.preventDefault();
 
     // Client-side validation
-    if (!editFormData.name  || !editFormData.price) {
+    if (!editFormData.name || !editFormData.price) {
       console.error('All fields are required');
       return;
     }
@@ -148,7 +148,7 @@ const WordManagement = () => {
     e.preventDefault();
 
     // Client-side validation
-    if (!newFormData.name  || !newFormData.price) {
+    if (!newFormData.name || !newFormData.price) {
       alert('All fields are required');
       return;
     }
@@ -241,103 +241,112 @@ const WordManagement = () => {
   };
 
   return (
-    <div className='Contact dash'>
-        <h1>Drinks</h1>
-        <hr />
-   
-      <form onSubmit={handleAddSubmit}>
-        <h2 id='adddrinks'>Add New Drinks</h2>
-        <input
-          type="text"
-          name="name"
-          value={newFormData.name}
-          onChange={(e) => handleChange(e, false)}
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          name="price"
-          value={newFormData.price}
-          onChange={(e) => handleChange(e, false)}
-          placeholder="Price"
-        />
-        <input
-          className='dashimg'
-          type="file"
-          name="photo"
-          onChange={(e) => handleChange(e, false)}
-        />
-        <button type="submit" className='submit'>Add</button>
-      </form>
+    <>
+      <div className='dashboard'>
+        <div className='sidebar'>
+          <nav>
 
-      <hr />
-     
-      {editFormData.id && (
-        <form className='contact' onSubmit={handleEditSubmit}>
-          <h2 >Edit Item Drinks</h2>
-          <input
-            type="text"
-            name="name"
-            value={editFormData.name}
-            onChange={(e) => handleChange(e, true)}
-            placeholder="Name"
-          />
-          <input
-            type="text"
-            name="price"
-            value={editFormData.price}
-            onChange={(e) => handleChange(e, true)}
-            placeholder="Price"
-          />
-          <input
-            type="file"
-            name="photo"
-            onChange={(e) => handleChange(e, true)}
-          />
-          <button className='submit' type="submit">Save</button>
-        </form>
-      )}
+          </nav>
+        </div>
+        <div className='Contact dash Drinks_width'>
+          <h1>Drinks</h1>
+          <hr />
 
-<hr />
-    
-      <h1 id='alldrinks'>Items Management Drinks</h1>
+          <form onSubmit={handleAddSubmit}>
+            <h2 id='adddrinks'>Add New Drinks</h2>
+            <input
+              type="text"
+              name="name"
+              value={newFormData.name}
+              onChange={(e) => handleChange(e, false)}
+              placeholder="Name"
+            />
+            <input
+              type="text"
+              name="price"
+              value={newFormData.price}
+              onChange={(e) => handleChange(e, false)}
+              placeholder="Price"
+            />
+            <input
+              type="file"
+              name="photo"
+              onChange={(e) => handleChange(e, false)}
+            />
+            <button type="submit" className='submit'>Add</button>
+          </form>
 
-<div className="card-container backColor">
-  {data.map((item) => (
-    <div key={item.id} className="food-item dash_drinks">
-      <img className='imgCard' src={`https://api.calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
-      <h3 className='nameCard'>{item.name} <span>{item.price}</span></h3>
-      <button className='submit' onClick={() => setEditFormData({
-        id: item.id,
-        name: item.name,
-        price: item.price,
-        photo: null
-      })}>Edit</button>
-      <button className='submit' onClick={() => handleDeleteSubmit(item.id)}>Delete</button>
-    </div>
-  ))}
-</div>
-<hr />
-<form onSubmit={handleProfileSubmit} className="profile-form">
-        <h2 id='profile'>Update Profile</h2>
-        <input
-          type="text"
-          name="name"
-          value={profile.name}
-          onChange={handleProfileChange}
-          placeholder="Name"
-        />
-        <input
-          type="password"
-          name="password"
-          value={profile.password}
-          onChange={handleProfileChange}
-          placeholder="Password"
-        />
-        <button type="submit" className='submit'>Update Profile</button>
-      </form>
-     
-    </div>
+          <hr />
+
+          {editFormData.id && (
+            <form className='contact' onSubmit={handleEditSubmit}>
+              <h2 >Edit Item Drinks</h2>
+              <input
+                type="text"
+                name="name"
+                value={editFormData.name}
+                onChange={(e) => handleChange(e, true)}
+                placeholder="Name"
+              />
+              <input
+                type="text"
+                name="price"
+                value={editFormData.price}
+                onChange={(e) => handleChange(e, true)}
+                placeholder="Price"
+              />
+              <input
+                type="file"
+                name="photo"
+                onChange={(e) => handleChange(e, true)}
+              />
+              <button className='submit' type="submit">Save</button>
+            </form>
+          )}
+
+          <hr />
+
+          <h1 id='alldrinks'>Items Management Drinks</h1>
+
+          <div className="card-container backColor">
+            {data.map((item) => (
+              <div key={item.id} className="food-item dash_drinks">
+                <img className='imgCard' src={`https://api.calamardoalicante.com/api/image/${item.photo}`} alt={item.name} />
+                <h3 className='nameCard'>{item.name} <span>{item.price}</span></h3>
+                <button className='submit' onClick={() => setEditFormData({
+                  id: item.id,
+                  name: item.name,
+                  price: item.price,
+                  photo: null
+                })}>Edit</button>
+                <button className='submit' onClick={() => handleDeleteSubmit(item.id)}>Delete</button>
+              </div>
+            ))}
+          </div>
+          <hr />
+          <form onSubmit={handleProfileSubmit} className="profile-form">
+            <h2 id='profile'>Update Profile</h2>
+            <input
+              type="text"
+              name="name"
+              value={profile.name}
+              onChange={handleProfileChange}
+              placeholder="Name"
+            />
+            <input
+              type="password"
+              name="password"
+              value={profile.password}
+              onChange={handleProfileChange}
+              placeholder="Password"
+            />
+            <button type="submit" className='submit'>Update Profile</button>
+          </form>
+        </div>
+      </div>
+
+
+    </>
   );
 };
 

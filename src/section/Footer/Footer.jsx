@@ -1,3 +1,4 @@
+import { FaInstagram } from "react-icons/fa";
 import "./Footer.css";
 export default function Footer() {
   return (
@@ -13,21 +14,24 @@ export default function Footer() {
             <ul>
               <h2>Our Location </h2>
               <li>
-                Peppery Head Office
-                <p className="diffrent">1422 1st St. Santa Rosa,t CA 94559.</p>
-                <p className="diffrent">Texas, USA</p>
+                {/* Peppery Head Office */}
+                <p className="diffrent">C. San Vicente, 16, 03004 Alicante, Spain</p>
+                {/* <p className="diffrent">Texas, USA</p> */}
               </li>
               <li>
-                Call for Reservations: <span> (002) 255-0211</span>
+                Call for Reservations: <span>+34695863594</span>
               </li>
-              <li>
+              {/* <li>
                 HotLine: <span> (002) 255-0211</span>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 Fax: <span> (002) 255-0211</span>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 E-mail: <span> admin@e-mail.com</span>
+              </li> */}
+              <li>
+                <a className="instagram" href="https://www.instagram.com/calamardo.alc/" target="_blank"><FaInstagram /></a>
               </li>
             </ul>
           </div>
@@ -35,28 +39,29 @@ export default function Footer() {
             <ul>
               <h2>Opening Times</h2>
               <li>
-                Monday <span>pm - 10 pm</span>
+                Monday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Tuesday <span>pm - 10 pm </span>
+                Tuesday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Wednesday <span> pm - Midnight </span>
+                Wednesday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Thursday <span> 1pm - Midnight </span>
+                Thursday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Friday <span> 1pm - Midnight </span>
+                Friday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Saturday <span className="closed">CLOSED</span>
+                Saturday <span>12:30 pm – 11 pm</span>
               </li>
               <li>
-                Sunday <span> 1 pm - 10 pm </span>
+                Sunday <span>12:30 pm – 11 pm</span>
               </li>
             </ul>
-         
+
+
           </div>
           {/* <div className="instagram">
           <ul>
